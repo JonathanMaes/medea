@@ -24,7 +24,7 @@ firstFalseByte = const(102)     # ord('f')
 firstNullByte = const(110)      # ord('n')
 minusByte = const(45)           # ord('-')
 
-numberMetaBytes = b'.xeEb' # non-digit characters allowable in numbers
+numberMetaBytes = b'-+.xeEb' # non-digit characters allowable in numbers
 spaceBytes = b' \n\t\r'
 digitBytes = b'0123456789'
 
