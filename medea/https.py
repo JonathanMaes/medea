@@ -1,6 +1,6 @@
 import sys
 import gc
-from medea import defaultBufferSize
+from medea import defaultBufferSize, Tokenizer
 from medea.agnostic import socket, ssl, SocketTimeoutError
 
 def generateResponseBytes(url, headers=None, timeout=1.0, buf=None, bufferSize=defaultBufferSize):
@@ -110,3 +110,7 @@ def generateContentBytes(*a, **k):
     contentLength = processHttpHeaders(byteGenerator)
     byteGenerator.send(contentLength)
     yield from byteGenerator
+
+def tokenizeContent(*a, **k):
+    tokenizer = Tokenizer()
+    yield from tokenizer.tokenizeValue(generateContentBytes(*a, **k))
