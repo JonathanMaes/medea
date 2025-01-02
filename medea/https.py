@@ -18,7 +18,7 @@ def generateResponseBytes(url, headers=None, timeout=1.0, buf=None, bufferSize=d
     if hasattr(s, 'settimeout'):
         s.settimeout(timeout)
     try:
-        s = ssl.wrap_socket(s)
+        s = ssl.wrap_socket(s, server_hostname=host)
         s.write(b'GET /')
         s.write(path.encode('ascii'))
         s.write(b' HTTP/1.1\r\nHost: ')
